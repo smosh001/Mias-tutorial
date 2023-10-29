@@ -19,7 +19,7 @@ Node.js plays a fundamental role in the JavaScript ecosystem. It provides an asy
 
 TIP: VS code actually has a command line terminal built into the editor that you can use as well:
 
-![VScodeTerminal](https://github.com/smosh001/Mias-tutorial/assets/98389984/93e293e8-cbdb-4059-b357-daa538010025)
+![VScodeTerminal](https://github.com/smosh001/Mias-tutorial/assets/98389984/4b2dc869-ec2b-4c9f-b459-599c6011f248)
 
 Before proceeding with the installation, it's wise to check if you already have Node.js installed on your machine. To do this, open your command line interface.
 
@@ -253,7 +253,7 @@ const material = new THREE.MeshStandardMaterial({ color: 0xFF6347 });
 
 This step concludes the setup and initial object creation in your Three.js project.
 
-![standardMaterial](https://github.com/smosh001/Mias-tutorial/assets/98389984/55053651-fd8d-4e58-9383-6769a1715678)
+![standardMaterial](https://github.com/smosh001/Mias-tutorial/assets/98389984/0d0b8afb-5d0e-40c9-9cf7-80d503b73d1f)
 
 ## Step 9: Animating Your Scene
 
@@ -283,7 +283,7 @@ animate();
 
 Congratulations! Your scene should now exhibit movement as shown below:
 
-![twoObjects (1)](https://github.com/smosh001/Mias-tutorial/assets/98389984/1804e650-ea8d-45c3-b082-e973afa1e77c)
+![twoObjects](https://github.com/smosh001/Mias-tutorial/assets/98389984/e131b4d6-4b4b-4c79-a573-6a34d6709efa)
 
 ## Step 10: Using Three.js Helpers
 
@@ -307,7 +307,7 @@ For displaying the 3D axes in your scene, you can add a grid helper.
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
 ```
-![lightHelper](https://github.com/smosh001/Mias-tutorial/assets/98389984/0ced7618-91d5-4659-b34a-e046195e5028)
+![lightHelper](https://github.com/smosh001/Mias-tutorial/assets/98389984/a4bc42c6-7846-4591-bf4b-36e76e603077)
 
 ## Step 11: Implementing Orbit Controls
 
@@ -353,7 +353,7 @@ You can set your scene's background to an image of your choice. Follow these ste
 
 12.2. Choose a high-resolution image you'd like as the background and save it in the "images" directory. For example, we're using a night sky image.
 
-![night_sky](https://github.com/smosh001/Mias-tutorial/assets/98389984/ca878884-e192-4b8a-915c-f8e785f283c1)
+![night_sky](https://github.com/smosh001/Mias-tutorial/assets/98389984/a8079e86-8af1-4c7c-981e-c909434165ae)
 
 12.3. Create a new `Texture` object and set it as the scene's background:
 
@@ -365,7 +365,7 @@ scene.background = spaceTexture;
 
 Your scene will now have a custom background as shown below:
 
-![backgroundTexture](https://github.com/smosh001/Mias-tutorial/assets/98389984/c100b3bd-d897-4b6c-8dad-b81dd8724373)
+![backgroundTexture](https://github.com/smosh001/Mias-tutorial/assets/98389984/70844928-69a4-4fcd-abe0-8385768d4a4c)
 
 ## Step 13: Texture Mapping
 
@@ -373,7 +373,7 @@ Texture mapping involves applying flat images to the surface of 3D objects. Thre
 
 13.1. Find an image you'd like to apply to an object's surface and save it in the "images" directory. For example, we'll use a smiley face image.
 
-![smile](https://github.com/smosh001/Mias-tutorial/assets/98389984/579870f7-109a-4b62-a413-ee5ad3e897e3)
+![smile](https://github.com/smosh001/Mias-tutorial/assets/98389984/ec58abe0-9470-4346-9174-f4f76f55952e)
 
 13.2. Create a new `Texture`:
 
@@ -391,7 +391,7 @@ const smileMesh = new THREE.Mesh(sphereGeometry, smileMaterial);
 
 scene.add(smileMesh);
 ```
-![textureMapping](https://github.com/smosh001/Mias-tutorial/assets/98389984/bf25a1cc-e5eb-4ab5-aadb-71155ade8dba)
+![textureMapping](https://github.com/smosh001/Mias-tutorial/assets/98389984/cae91d71-64fb-4743-869d-b69828a9c488)
 
 You can adjust the object's position, rotation, and size as needed, just like with other objects.
 
@@ -410,13 +410,13 @@ Begin by choosing a texture image that you would like to apply to the surface of
 To create a normal map from your chosen texture, you can use online tools such as the **Texture Generator** (http://cpetry.github.io/TextureGenerator-Online/). 
 This process involves converting the features and details in your texture into a map that represents how light interacts with the surface.
 
-![texture](https://github.com/smosh001/Mias-tutorial/assets/98389984/5b22fae3-c19b-4f3a-8345-49c4fe9dd117)
+![texture](https://github.com/smosh001/Mias-tutorial/assets/98389984/77fd5004-27d1-4993-9fc8-9a003c3e5bf5)
 
 Now, we must convert this texture image file into a normal map. We used this site to upload our texture image file and have it converted: **Normal Map Online**(https://cpetry.github.io/NormalMap-Online/)
 
 Here's the normal map that was generated from our image:
 
-![textureNormal](https://github.com/smosh001/Mias-tutorial/assets/98389984/7b2439ec-f135-4e2f-9027-465044aeaeb1)
+![textureNormal](https://github.com/smosh001/Mias-tutorial/assets/98389984/2459e58b-0787-4216-8620-b54c3f3fab2f)
 
 14.3. **Resulting Textures:** 
 
@@ -449,6 +449,7 @@ torusKnot.position.y = 20;
 ```
 
 By adjusting properties like `roughness` and `metalness`, you can control how your object interacts with light, making it appear shinier or more reflective, as shown below:
-![normalMapping](https://github.com/smosh001/Mias-tutorial/assets/98389984/83250568-e2a6-4856-a9e7-9c66fa19a270)
+
+![normalMapping](https://github.com/smosh001/Mias-tutorial/assets/98389984/c4c9d8ce-a7a2-4c50-9ee5-b6737edf10e3)
 
 With these steps, you can achieve a 3D scene with objects that have vivid, light-reactive textures, adding depth and realism to your Three.js project.
