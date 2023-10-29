@@ -130,8 +130,6 @@ Here's an example of how this should be structured:
 </html>
 ```
 
-Here's a more logical and systematic version of the provided text:
-
 ## Step 3: Configure Your Background Canvas with CSS
 
 In your project directory, alongside your `index.html` file, you should locate a CSS file named `style.css`. To set your canvas element as the background of your site, add the following code to your `style.css`:
