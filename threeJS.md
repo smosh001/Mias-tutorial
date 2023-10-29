@@ -1,6 +1,7 @@
 # Three.JS Tutorial - Create 3D Environments with HTML and Javascript
 
-![three.js blog](images/screenshots/threeJSblog.jpg)
+![three.js blog](![image](https://github.com/smosh001/Mias-tutorial/assets/98389984/1bdd3e3a-49cb-4207-8133-2048d5d06dbc)
+)
 
 Check out an example:
 [Three.js Blog](https://am0eba-byte.github.io/internshipblog-3js/)
