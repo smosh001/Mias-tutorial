@@ -141,7 +141,7 @@ canvas {
 
 This CSS code will ensure that the `<canvas>` element in your HTML serves as the background for your website. This canvas will be the canvas on which your 3D objects will be displayed as you create them using JavaScript.
 
-## Step 3: Viewing Your Site Locally
+## Step 4: Viewing Your Site Locally
 
 Since Three.js relies on dependencies for rendering, you need to run your application in the command line whenever you make changes to view it locally.
 
@@ -153,7 +153,7 @@ npm run dev
 
 This command will generate a localhost link in the command line. Copy this link and paste it into your web browser to view your application locally.
 
-## Step 4: Writing JavaScript Code
+## Step 5: Writing JavaScript Code
 
 In your `main.js` JavaScript file, you'll need to import the Three.js node package module to access the pre-built 3D-building methods and objects. Simply add these import statements at the beginning of your JS file:
 
@@ -161,7 +161,7 @@ In your `main.js` JavaScript file, you'll need to import the Three.js node packa
 import * as THREE from 'three';
 ```
 
-## Step 5: Setting Up Your Three.js Scene
+## Step 6: Setting Up Your Three.js Scene
 
 You'll require three main components to configure your Three.js scene:
 
@@ -195,7 +195,7 @@ camera.position.setZ(50);
 camera.position.setX(-3);
 ```
 
-## Step 6: Creating Your First 3D Object
+## Step 7: Creating Your First 3D Object
 
 With your scene prepared, you can begin adding 3D objects. To create a 3D object in Three.js, you'll need three essential components:
 
@@ -222,7 +222,7 @@ cube.rotation.x = 2;
 cube.rotation.y = 0.5;
 ```
 
-## Step 7: Lights and Material Types
+## Step 8: Lights and Material Types
 
 Three.js provides various material types and textures for objects. Some materials require light sources in the scene to be visible. For instance, the Phong material requires light. Here's how to create and add a light source to your scene:
 
@@ -249,258 +249,163 @@ const material = new THREE.MeshStandardMaterial({ color: 0xFF6347 });
 This step concludes the setup and initial object creation in your Three.js project.
 ![standard material cube](images/screenshots/standardMaterial.jpg)
 
+## Step 9: Animating Your Scene
 
-# Animate your scene
+To make your objects come to life and move over time, you need to create an animate function and specify the animation properties within it. You can animate various properties of your objects.
 
-To make your objects move through time, we need to create a new `animate` function and set our animation properties within it.
-
-You can animate just about any property of an object you want.
-
-```
+```javascript
 function animate() {
-	requestAnimationFrame( animate );
+  requestAnimationFrame(animate);
 
-    // slowly rotate the cube:
+  // Slowly rotate the cube:
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+  // Rotate the icosahedron a bit faster in the opposite direction:
+  icoMesh.rotation.z += -0.03;
+  icoMesh.rotation.y += -0.03;
 
-    // rotate the icosahedron a little faster in the opposite direction:
-
-    icoMesh.rotation.z += -0.03
-    icoMesh.rotation.y += -0.03
-
-	renderer.render( scene, camera );
+  renderer.render(scene, camera);
 }
 ```
 
-You must call the animate() function in order to tell the browser to use it:
-```
+Make sure to call the `animate()` function to instruct the browser to utilize it:
+
+```javascript
 animate();
 ```
 
-Congratulations! Your scene should now look something like this:
+Congratulations! Your scene should now exhibit movement.
 
-![three.JS object screenshot](images/screenshots/twoObjects.jpg)
+## Step 10: Using Three.js Helpers
 
+Three.js provides a range of scene helpers to aid in visualizing your scene's orientation. You can add these helpers as follows:
 
+**Light Helper:**
 
-## Three.JS Helpers
+To visualize the positions of light sources in your scene, you can add a light helper to your `pointLight` object.
 
-Three.JS comes with a wide variety of scene helpers to assist in orienting the view of your scene. 
-
-We can add a **Light Helper**, which shows us where in the scene our light objects are positioned.
-
-Let's add a light helper to our `pointLight` object:
-
-```
+```javascript
 // Helpers
-
 const lightHelper = new THREE.PointLightHelper(pointLight);
-
-scene.add(lightHelper)
-```
-![light helper](images/screenshots/lightHelper.jpg)
-
-
-We can also add a **Grid Helper** to show the 3D axes of our scene.
-
-```
-const gridHelper = new THREE.GridHelper(200,50);
-
-scene.add(gridHelper)
+scene.add(lightHelper);
 ```
 
+**Grid Helper:**
 
-## Orbit Controls
+For displaying the 3D axes in your scene, you can add a grid helper.
 
-Three.JS has various types of Control methods to allow you to add interactive functionality to your scene. 
-
-Let's add an `Orbit Control`, which will allow us to move our camera and traverse our scene with mouse controls and zoom.
-
-In order to add the Orbit Controls as a function, we need to import that package from the three.js dependencies. At the top of your document where you imported THREE.JS, (directly underneath `import * as THREE from 'three';`) add this line of code:
-
+```javascript
+const gridHelper = new THREE.GridHelper(200, 50);
+scene.add(gridHelper);
 ```
+
+## Step 11: Implementing Orbit Controls
+
+Three.js provides various control methods to add interactivity to your scene. Here, we'll set up Orbit Controls, allowing you to navigate the scene using mouse controls and zoom.
+
+To activate Orbit Controls, import the package and declare it as a constant:
+
+```javascript
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-```
 
-Then, under your `Helpers`, activate your orbit controls by declaring it as a constant:
-
-```
 // Orbit Control
-
-const controls = new OrbitControls(camera, renderer.domElement)
+const controls = new OrbitControls(camera, renderer.domElement);
 ```
 
-Your orbit controls will not be functional until you add an `.update()` method to your new `controls` object WITHIN your `animate(){}` function:
+Your Orbit Controls won't be functional until you add an `.update()` method to your `controls` object within your `animate()` function:
 
-```
+```javascript
 function animate() {
-	requestAnimationFrame( animate );
+  requestAnimationFrame(animate);
 
-    // slowly rotate the cube:
+  // Slowly rotate the cube:
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+  // Rotate the icosahedron a bit faster in the opposite direction:
+  icoMesh.rotation.z += -0.03;
+  icoMesh.rotation.y += -0.03;
 
-    // rotate the icosahedron a little faster in the opposite direction:
+  // Allow your Orbit Controls to update live in real-time:
+  controls.update();
 
-    icoMesh.rotation.z += -0.03
-    icoMesh.rotation.y += -0.03
-
-    // ALLOWS YOUR ORBIT CONTROLS TO UPDATE LIVE IN REAL-TIME:
-    controls.update()
-
-	renderer.render( scene, camera );
+  renderer.render(scene, camera);
 }
 ```
 
-When you refresh your server, you should now be able to click and drag to orbit the camera view of your scene!
+Upon refreshing your server, you should be able to click and drag to orbit the camera view of your scene.
 
-## Scene Backgrounds
+## Step 12: Configuring Scene Backgrounds
 
-We can set our scene backgrounds to whatever we want, using regular image files. 
+You can set your scene's background to an image of your choice. Follow these steps:
 
-- create a new folder in your project and name it `images` 
+1. Create a new folder named "images" in your project directory.
 
-- find a cool, high-resolution image that you'd like to appear as the background of your scene. We are using this one:
+2. Choose a high-resolution image you'd like as the background and save it in the "images" directory. For example, we're using a night sky image.
 
-![night sky background photo](images/night_sky.jpg)
+3. Create a new `Texture` object and set it as the scene's background:
 
-- save the image file of your choosing inside your new `/images` directory.
-
-- create a new `Texture` object by referencing your image, and add it to the scene:
-
-```
+```javascript
 // Background
-
-const spaceTexture = new THREE.TextureLoader().load('images/night_sky.jpg')
-
+const spaceTexture = new THREE.TextureLoader().load('images/night_sky.jpg');
 scene.background = spaceTexture;
 ```
-![background texture scene](images/screenshots/backgroundTexture.jpg)
 
+Your scene will now have a custom background.
 
+## Step 13: Texture Mapping
 
-## Texture Mapping
+Texture mapping involves applying flat images to the surface of 3D objects. Three.js allows you to create Texture objects and apply them to your 3D objects. Here's how to do it:
 
-In the world of 3D modeling, `Texture Mapping` refers to mapping flat images onto the surface of a 3D object. Three.JS allows us to do this by creating `Texture` objects and applying them to our 3D objects using methods.
+13.1. Find an image you'd like to apply to an object's surface and save it in the "images" directory. For example, we'll use a smiley face image.
 
-Find an image file that you'd like to apply to the surface of a new object. We will be using this one:
+13.2. Create a new `Texture`:
 
-![smiley face texture](images/smile.jpg)
-
-Save your texture image file in your `/images` directory.
-
-Now, in our `main.js`, let's create a new texture that we will map onto a new object:
-
-```
+```javascript
 // Object texture mapping
-
-const smileTexture = new THREE.TextureLoader().load('images/smile.jpg')
+const smileTexture = new THREE.TextureLoader().load('images/smile.jpg');
 ```
 
-Now, let's create a new `Sphere` object to map our new texture onto. 
+13.3. Create a new 3D object (in this case, a sphere) and apply the texture to it:
 
-**Remember** new objects require three basic components:
-
-- a `geometry`
-- a `material`
-  - in this case, our new `BasicMaterial` will have a value of `{map: smileTexture}` instead of a color hex code.
-- a `mesh`, which combines the `geometry` and `material` to create the final visible object.
-
-```
-// Object texture mapping
-
-const smileTexture = new THREE.TextureLoader().load('images/smile.jpg')
-
-const sphereGeometry = new THREE.SphereGeometry( 10, 22, 10 );
-
-const smileMaterial = new THREE.MeshBasicMaterial({map: smileTexture})
-
+```javascript
+const sphereGeometry = new THREE.SphereGeometry(10, 22, 10);
+const smileMaterial = new THREE.MeshBasicMaterial({ map: smileTexture });
 const smileMesh = new THREE.Mesh(sphereGeometry, smileMaterial);
 
 scene.add(smileMesh);
 ```
 
-![new texture-mapped object](images/screenshots/textureMapping.jpg)
+You can adjust the object's position, rotation, and size as needed, just like with other objects.
 
-You can manipulate the object's static position, rotation, and size as you wish, the same as your other objects.
+## Step 14: Normal Texture Mapping
 
-You can also add property changes to this new texture to be animated in real-time in your `animate()` function:
+Normal texture mapping allows you to create realistic textures by faking lighting on 3D objects. To achieve this, follow these steps:
 
-```
-function animate() {
-	requestAnimationFrame( animate );
+14.1. Generate a normal map from an image. You can use online tools to create a normal map from a texture image. One online tool you can use is http://cpetry.github.io/TextureGenerator-Online/,It was used to generate the image below.
 
-    // slowly rotate the cube:
+14.2. Save the generated normal map image in the "images" directory.
 
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+14.3. Create a new `normalTexture`:
 
-    // rotate the icosahedron a little faster in the opposite direction:
-
-    icoMesh.rotation.z += -0.03
-    icoMesh.rotation.y += -0.03
-
-    // rotate the smiley sphere on the Y axis:
-
-    smileMesh.rotation.y += 0.05
-
-    controls.update()
-
-	renderer.render( scene, camera );
-}
-```
-
-### Normal Texture Mapping
-
-Three.JS also allows you to create vivid textures to alter the surface shape of your mesh to create real, light-reactive textures on your objects.
-
-To do this, we need to create a **normal**. 
-
-**Normal mapping** in the 3D world refers to a texture mapping technique used for faking the lighting of bumps and dents – an implementation of bump mapping. It is used to add details without using more polygons.
-
-To create a normal, you must first find a texture image you like that can be converted into a normal.
-
-We used this site to generate and customize a texture:
-[Texture Generator Online](http://cpetry.github.io/TextureGenerator-Online/)
-
-Here's the texture we generated:
-
-![texture](images/texture.png)
-
-Now, we must convert this texture image file into a normal map. We used this site to upload our texture image file and have it converted into a normal:
-[Normal Map Online](https://cpetry.github.io/NormalMap-Online/)
-
-Here's the normal map that was generated from our image:
-![normal map](images/textureNormal.png)
-
-Now we need to create a new `normalTexture` object in our Javascript by loading a new texture and loading in our normalMap image file:
-
-```
+```javascript
 const normalTexture = new THREE.TextureLoader().load('images/normals/textureNormal.png');
 ```
 
-Now, to apply our normal map to a new object, we must apply our normal map image to the `normalMap` property within our new `MeshStandardMaterial`. 
+14.4. Apply the normal map to a new 3D object, such as a torus knot:
 
-```
+```javascript
 // Normal Texture Map
-
-const torusGeo = new THREE.TorusKnotGeometry( 5, 1, 250, 5, 9, 15 );
-const torusMaterial = new THREE.MeshStandardMaterial( { 
+const torusGeo = new THREE.TorusKnotGeometry(5, 1, 250, 5, 9, 15);
+const torusMaterial = new THREE.MeshStandardMaterial({
   normalMap: normalTexture,
   roughness: 0,
-  metalness: .8
-} );
+  metalness: 0.8,
+});
 
-const torusKnot = new THREE.Mesh( torusGeo, torusMaterial );
-
-scene.add( torusKnot );
-torusKnot.position.y = 20
-
+const torusKnot = new THREE.Mesh(torusGeo, torusMaterial);
+scene.add(torusKnot);
+torusKnot.position.y = 20;
 ```
-
-We also added a `roughness` and `metalness` property value to make our new object look more shiny and reflect light. Your scene should look something like this:
-
-![normal mapping](images/screenshots/normalMapping.jpg)
+Now your scene exhibits realistic textures with normal mapping, adding depth and realism to your 3D objects.
