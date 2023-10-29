@@ -9,104 +9,92 @@ See other awesome things you can do with three.js:
 [Three.JS examples page](https://threejs.org/examples/#webgl_animation_keyframes)
 
 
-## Step 1: *Install the Three.JS node package module using your Terminal/Command Line*
+## Step 1: *Install the Three.JS Node Package Module using your Terminal/Command Line*
+Before we embark on the journey of creating our impressive 3D website, it's essential to set up the necessary tools on the command line. This includes the installation of  `Node.js` and `npm` at the command line.
 
-Before we dive into making our awesome 3D website, we need to install `Node.js` and `npm` at the command line.
+## 1.1 Install Node.js
 
-  -Before we dive into making our awesome 3D website, we need to install <code>Node.js</code> and
-            <code>npm</code>
-            at the command line. 
-  -We strongly recommend writing your code in [JetBrains' WebStorm](https://www.jetbrains.com/webstorm/download/), 
-                which we will explore as an alternative
-            to the oXygen XML Editor for working intensively on JavaScript projects.
+Node.js plays a fundamental role in the JavaScript ecosystem. It provides an asynchronous event-driven JavaScript runtime, designed for building scalable network applications, as described by Node.js developers.
 
+Before proceeding with the installation, it's wise to check if you already have Node.js installed on your machine. To do this, open your command line interface.
 
-### **Install Node.js**
+## 1.2 Optional: Choose Your Development Environment
 
-Node.JS is what makes the Javascript world go round. 
+While Node.js is a crucial part of our toolkit, the choice of development environment can greatly impact your workflow. We strongly recommend considering JetBrains' WebStorm as an alternative to oXygen XML Editor, particularly for intensive JavaScript projects. [JetBrains' WebStorm](https://www.jetbrains.com/webstorm/download/), 
 
-"As an asynchronous event-driven JavaScript runtime, Node.js is designed to build scalable network applications." *-Node.JS devs*
+## Step 2: Verify and Set Up Development Environment
 
-Before downloading Node.JS, you should check to see if you already have it installed in your machine.
-To do this, we will open our Command Line.
+## 2.1 Verify Node.js Installation
 
-- **Hot tip part 2:** VS code actually has a command line terminal built into the editor that you can use as well:
+To begin, it's essential to confirm whether you have Node.js installed on your system. We'll use the integrated terminal in Visual Studio Code (VS Code) for this check.
 
-![VS code terminal](images/screenshots/VScodeTerminal.jpg)
+In the VS Code terminal, enter the following command:
 
-- Enter this command to check if you already have Node.JS Installed:
-  ```
-    node -v
-  ```
-
- If you already have Node.JS installed, the terminal will print a version number that looks something like this: `v0.10.35`
-
- If your terminal didn't print a version number, you need to go [download Node.JS](https://nodejs.org/en/). (Don't worry, it's completely free - and if you really want to get into Javascript on any level, including professionally, Node.JS is a must-have.)
-
- ### **Install NPM**
-
-Now that you have Node.JS installed, allow me to introduce you to the wonderful world of the **[Node Package Manager (NPM)](https://www.npmjs.com/)** community. NPM allows brilliant developers to write awesome open-source Node.JS package modules that will allow you to do super cool things with Javascript, including make 3D websites. We need to install NPM at the command line in order to install the Three.JS package.
-
-- First, check to see if you already have NPM installed:
-
+```bash
+node -v
 ```
+
+If Node.js is already installed, the terminal will display a version number, typically in this format: `v0.10.35`.
+
+If you don't see a version number, proceed to install Node.js. It's important to note that Node.js is a free and indispensable tool for any level of JavaScript development, including professional work.
+
+## 2.2 Install Node Package Manager (NPM)**
+
+Now that you have Node.js installed, let's introduce you to the Node Package Manager (NPM). NPM is a vital part of the JavaScript ecosystem, enabling developers to utilize open-source Node.js package modules. These modules empower you to accomplish impressive tasks with JavaScript, such as creating 3D websites. You'll need NPM to install the Three.js package.
+
+Check if NPM is already installed by running this command in your VS Code terminal:
+
+```bash
 npm -v
 ```
 
-Again, similar to when we checked for node.js, a version number will print if you already have npm installed. 
-- If not, you need to install it. We can do this at the command line with this command:
+Similar to the Node.js check, a version number should appear if NPM is already installed. If not, you'll need to install it using the following command:
 
-```
+```bash
 npm install -g npm
 ```
 
-Now you're all set to create your new project repository!
+With Node.js and NPM in place, you're now ready to set up your project repository.
 
-### **Create an empty project directory, and install VITE**
+## 2.3 Create a Project Directory and Install VITE
 
-Once you have made your project directory, open the command line at your empty directory and enter this command:
+Begin by creating an empty project directory. Once the directory is established, open the command line within it and enter the following command:
 
-
-```
+```bash
 npm init vite
 ```
-Follow the prompts given at command line:
 
-- name your project
-- name your package (press enter for default)
-- select `vanilla` framework (yellow)
-- select `Javascript` for the language (yellow)
+Follow the on-screen prompts:
 
-* **NOTE** If you cannot select with the arrow keys on your Windows computer, 
-switch to Windows Powershell or Windows terminal (instead of Git Bash)
+- Name your project.
+- For the package name, you can press Enter to accept the default.
+- Select the "vanilla" framework (indicated in yellow).
+- Choose "JavaScript" as the language (indicated in yellow).
 
-This will create some new files in your directory.
+Note: If arrow key selection isn't functional on your Windows computer, consider using Windows Powershell or Windows Terminal instead of Git Bash.
 
-### Install Three.JS at command line
+Executing this command will generate new files within your directory.
 
-enter this command:
+## 2.4 Install Three.js via Command Line
 
-```
+To work with Three.js, you need to install it via the command line. Enter the following command:
+
+```bash
 npm install --save three
 ```
+You should observe the creation of a new `node_modules` directory, a `package.json` file, and a `package-lock.json` file.
 
-You should see a new `node_modules` directory, a `package.json` file, and a `package-lock.json` file. 
+Important: It's crucial not to modify or interfere with these files and directories. They contain dependencies automatically managed by NPM, and manual adjustments can lead to issues.
 
-- **DO NOT TOUCH THESE THINGS**
+## 2.5 Prepare Your HTML**
 
-These files and directory contain dependencies that NPM automagically generates for you. Humans do not need to touch them directly, and should never touch them for any reason at all - *or you'll destroy the planet*
+To render your 3D world, your HTML should include three essential elements:
 
+1. A `<canvas>` element with a unique `id` attribute, serving as the canvas for your 3D objects.
+2. A `<script>` tag with the `type` attribute set to "module" and the `src` attribute pointing to your JavaScript file (usually named `main.js`), which contains the 3D instructions.
+3. A `<main>` element for text content overlaying your 3D environment.
 
-
-
-## Write your HTML
-
-You'll need three basic elements in your HTML to render your 3D world:
-- `<canvas>` with a unique `@id` that will literally act as the canvas for your 3D objects to live in.
-- `<script type="module" src="./main.js">` to connect your HTML to your Javascript file with all fo the 3D instructions inside it.
-- `<main>` to hold the text contents that will float on top of your 3D environment.
-
-It should look something like this:
+Here's an example of how this should be structured:
 
 ```
 <!DOCTYPE html>
@@ -137,161 +125,109 @@ It should look something like this:
 </html>
 ```
 
-## Create your background canvas by editing your CSS
+Here's a more logical and systematic version of the provided text:
 
-In the same directory as your index.html file, you should find a CSS file called `style.css`. Write the following code into that CSS to make the `<canvas>` element in your HTML be the background for your site:
+## Step 3: Configure Your Background Canvas with CSS
 
-```
-canvas{
-  position:fixed;
+In your project directory, alongside your `index.html` file, you should locate a CSS file named `style.css`. To set your canvas element as the background of your site, add the following code to your `style.css`:
+
+```css
+canvas {
+  position: fixed;
   top: 0;
   left: 0;
 }
 ```
 
-This is where your 3D objects will appear when we start creating them in your javascript.
+This CSS code will ensure that the `<canvas>` element in your HTML serves as the background for your website. This canvas will be the canvas on which your 3D objects will be displayed as you create them using JavaScript.
 
+## Step 3: Viewing Your Site Locally
 
-# HOW TO VIEW YOUR SITE LOCALLY
+Since Three.js relies on dependencies for rendering, you need to run your application in the command line whenever you make changes to view it locally.
 
-Since Three.JS requires dependencies in order to render, you need to tell your app to run in the command line every time you make changes in order to view it locally.
+In your command line terminal, execute the following command:
 
-In the command line terminal, run this command:
-
-```
+```bash
 npm run dev
 ```
 
-a `localhost` link should appear in the command line. Copy it, and paste it in your browser to view your app.
+This command will generate a localhost link in the command line. Copy this link and paste it into your web browser to view your application locally.
 
+## Step 4: Writing JavaScript Code
 
+In your `main.js` JavaScript file, you'll need to import the Three.js node package module to access the pre-built 3D-building methods and objects. Simply add these import statements at the beginning of your JS file:
 
-# Javascript Time!
-
-In your new `main.js` javascript file, you'll need to tell it to import the Three.JS node package module in order to reference the many pre-built 3D-building methods and objects.
-
-To do this, simply paste these `import` instructions on the first line of your JS file:
-
-```
+```javascript
 import * as THREE from 'three';
 ```
 
-## Scene Setup
+## Step 5: Setting Up Your Three.js Scene
 
-[Helpful Three.JS documentation in case you need it](https://threejs.org/docs/index.html#manual/en/introduction/Creating-a-scene)
+You'll require three main components to configure your Three.js scene:
 
-You need three main components to set up your Three.JS scene:
+1. A new scene.
+2. A camera.
+3. A renderer.
 
-- a new scene
-- a camera
-- a renderer
+These objects can be declared as constants in JavaScript using the `new THREE` methods:
 
-We create these objects by declaring a new `const`, a type of variable in Javascript, and defining it with new THREE methods.
-
-```
-// Setup
-
+```javascript
+// Scene Setup
 const scene = new THREE.Scene();
-
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
-
-// create a new renderer by instating the canvas element in our HTML // file
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
 ```
 
-You will not be able to view your new scene until you tell the renderer to render the scene and the camera with Three.js's `.render` method:
+However, your new scene won't be visible until you render it using the `.render` method:
 
-```
+```javascript
 renderer.render(scene, camera);
 ```
 
+Once these constants are set, you can manipulate them using Three.js's built-in methods. For example, you can adjust the pixel ratio, size, and camera position as needed:
 
-Now that we have each of these objects set as constants, we can manipulate them with Three.JS's built-in methods. 
-
-Let's set the pixel ratio, the size, and the camera position:
-
-```
+```javascript
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(50);
 camera.position.setX(-3);
-
 ```
 
+## Step 6: Creating Your First 3D Object
 
-## Create your first object!
+With your scene prepared, you can begin adding 3D objects. To create a 3D object in Three.js, you'll need three essential components:
 
-Now that our scene is set up, we can add 3D objects! 
+1. The geometry.
+2. The material.
+3. The mesh (a combination of geometry and material).
 
-There are three basic components you need in order to create a 3D object in Three.JS:
+You should create constants for each of these components to manipulate and add the final mesh to your scene. Here's an example of creating a basic cube:
 
-- the geometry
-- the material
-- the mesh (combining the geometry and the material)
-
-We need to create new `const` variabels for each of these components so that we may manipulate them and add the final mesh to our scene.
-
-Let's create a basic cube.
-
-  - The dimensions of the length, width, and height of your box go inside the new THREE geometry object parentheses `()` as arguments separated by commas:
-
-```
+```javascript
 const geometry = new THREE.BoxGeometry(10, 10, 10);
+const material = new THREE.MeshBasicMaterial({ color: 0xFF6347 });
+const cube = new THREE.Mesh(geometry, material);
 
-//set the color of the basic material in the object parameters `{}`
-
-const material = new THREE.MeshBasicMaterial( { color: 0xFF6347 } );
-
-const cube = new THREE.Mesh( geometry, material );
+scene.add(cube);
 ```
 
-To add our cube into the scene, use the `.add()` method.
+You can change the position and rotation of your object by manipulating the cube's properties:
 
-```
-scene.add( cube );
-```
-
-## Manipulating your object
-
-You can change the position of the object by manipulating the cube's `.position` property and attaching the axis on which you want to move it:
-
-```
+```javascript
 cube.position.z = -15;
 cube.position.x = -15;
-```
-
-Change the rotation of your object by manipulating the `.rotation` property and attaching the axis on which you wish to rotate it:
-
-```
 cube.rotation.x = 2;
-cube.rotation.y = .5;
+cube.rotation.y = 0.5;
 ```
 
-## Lights and Material Types
+## Step 7: Lights and Material Types
 
-Three.JS allows you to create objects with a wide variety of customizable material types and textures. Some material types require lights in the scene in order to be visible, including the `Phong` material. Your cube is visible because it is made of a `Basic` material, which is not affected by lights.
+Three.js provides various material types and textures for objects. Some materials require light sources in the scene to be visible. For instance, the Phong material requires light. Here's how to create and add a light source to your scene:
 
-Let's create a new object to test out new materials:
-
-```
-const ico = new THREE.IcosahedronGeometry(10);
-const icoMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
-const icoMesh = new THREE.Mesh(ico, icoMaterial);
-
-scene.add(icoMesh);
-
-icoMesh.position.z= -15;
-icoMesh.position.x= 15;
-```
-
-If you try to view your new object in the browser, you will not be able to see it. Since Phong materials require light, you will need to at least one light object in your scene:
-
-```
+```javascript
 // Lights
-
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(0, -10, 10);
 
@@ -302,19 +238,15 @@ scene.add(pointLight);
 scene.add(ambientLight);
 ```
 
-- Point Lights are lights that only go in one direction.
+Point lights emit light in a specific direction, while ambient lights diffuse light in all directions. You can change the light color by adjusting the HEX code value in the `THREE.Light()` object's parameters.
 
-- Ambient lights act more like the sun, spreading light in all directions. 
+If you switch your cube's material to `THREE.MeshStandardMaterial`, it will accept light, unlike `THREE.MeshBasicMaterial`. For example:
 
-- You can change the color of the light by manipulating the HEX code value of the new THREE.Light() object within the parentheses.
-
-
-Watch what happens if you change your `cube` material to a `StandardMaterial` which accepts light, replacing it with `BasicMaterial` , which does not accept light:
-
-```
-const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } );
+```javascript
+const material = new THREE.MeshStandardMaterial({ color: 0xFF6347 });
 ```
 
+This step concludes the setup and initial object creation in your Three.js project.
 ![standard material cube](images/screenshots/standardMaterial.jpg)
 
 
