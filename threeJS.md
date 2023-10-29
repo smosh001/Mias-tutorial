@@ -43,7 +43,7 @@ If Node.js is already installed, the terminal will display a version number, typ
 
 If you don't see a version number, proceed to install Node.js. It's important to note that Node.js is a free and indispensable tool for any level of JavaScript development, including professional work.
 
-2.2 Install Node Package Manager (NPM)**
+2.2 Install Node Package Manager (NPM)
 
 Now that you have Node.js installed, let's introduce you to the Node Package Manager (NPM). NPM is a vital part of the JavaScript ecosystem, enabling developers to utilize open-source Node.js package modules. These modules empower you to accomplish impressive tasks with JavaScript, such as creating 3D websites. You'll need NPM to install the Three.js package.
 
