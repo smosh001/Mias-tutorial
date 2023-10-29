@@ -1,24 +1,29 @@
-# Three.JS Tutorial - Create 3D Environments with HTML and Javascript
+# # Mastering Three.JS: Crafting 3D Worlds with HTML and JavaScript: A Three.Js Tutorial
 
-![three.js blog](images/screenshots/threeJSblog.jpg)
+![threeJSblog](https://github.com/smosh001/Mias-tutorial/assets/98389984/080e6d36-f6e7-43f0-99f0-eabeff7165dd)
 
-Check out an example:
+Take a look at a demonstration:
+
 [Three.js Blog](https://am0eba-byte.github.io/internshipblog-3js/)
 
-See other awesome things you can do with three.js:
-[Three.JS examples page](https://threejs.org/examples/#webgl_animation_keyframes)
+Explore additional amazing possibilities achievable with three.js:
 
+[Three.JS examples page](https://threejs.org/examples/#webgl_animation_keyframes)
 
 ## Step 1: *Install the Three.JS Node Package Module using your Terminal/Command Line*
 Before we embark on the journey of creating our impressive 3D website, it's essential to set up the necessary tools on the command line. This includes the installation of  `Node.js` and `npm` at the command line.
 
-## 1.1 Install Node.js
+1.1 Install Node.js
 
 Node.js plays a fundamental role in the JavaScript ecosystem. It provides an asynchronous event-driven JavaScript runtime, designed for building scalable network applications, as described by Node.js developers.
 
+TIP: VS code actually has a command line terminal built into the editor that you can use as well:
+
+![VScodeTerminal](https://github.com/smosh001/Mias-tutorial/assets/98389984/93e293e8-cbdb-4059-b357-daa538010025)
+
 Before proceeding with the installation, it's wise to check if you already have Node.js installed on your machine. To do this, open your command line interface.
 
-## 1.2 Optional: Choose Your Development Environment
+1.2 Optional: Choose Your Development Environment
 
 While Node.js is a crucial part of our toolkit, the choice of development environment can greatly impact your workflow. We strongly recommend considering JetBrains' WebStorm as an alternative to oXygen XML Editor, particularly for intensive JavaScript projects. [JetBrains' WebStorm](https://www.jetbrains.com/webstorm/download/), 
 
@@ -38,7 +43,7 @@ If Node.js is already installed, the terminal will display a version number, typ
 
 If you don't see a version number, proceed to install Node.js. It's important to note that Node.js is a free and indispensable tool for any level of JavaScript development, including professional work.
 
-## 2.2 Install Node Package Manager (NPM)**
+2.2 Install Node Package Manager (NPM)**
 
 Now that you have Node.js installed, let's introduce you to the Node Package Manager (NPM). NPM is a vital part of the JavaScript ecosystem, enabling developers to utilize open-source Node.js package modules. These modules empower you to accomplish impressive tasks with JavaScript, such as creating 3D websites. You'll need NPM to install the Three.js package.
 
@@ -56,7 +61,7 @@ npm install -g npm
 
 With Node.js and NPM in place, you're now ready to set up your project repository.
 
-## 2.3 Create a Project Directory and Install VITE
+2.3 Create a Project Directory and Install VITE
 
 Begin by creating an empty project directory. Once the directory is established, open the command line within it and enter the following command:
 
@@ -75,7 +80,7 @@ Note: If arrow key selection isn't functional on your Windows computer, consider
 
 Executing this command will generate new files within your directory.
 
-## 2.4 Install Three.js via Command Line
+2.4 Install Three.js via Command Line
 
 To work with Three.js, you need to install it via the command line. Enter the following command:
 
@@ -86,7 +91,7 @@ You should observe the creation of a new `node_modules` directory, a `package.js
 
 Important: It's crucial not to modify or interfere with these files and directories. They contain dependencies automatically managed by NPM, and manual adjustments can lead to issues.
 
-## 2.5 Prepare Your HTML**
+2.5 Prepare Your HTML
 
 To render your 3D world, your HTML should include three essential elements:
 
@@ -247,7 +252,8 @@ const material = new THREE.MeshStandardMaterial({ color: 0xFF6347 });
 ```
 
 This step concludes the setup and initial object creation in your Three.js project.
-![standard material cube](images/screenshots/standardMaterial.jpg)
+
+![standardMaterial](https://github.com/smosh001/Mias-tutorial/assets/98389984/55053651-fd8d-4e58-9383-6769a1715678)
 
 ## Step 9: Animating Your Scene
 
@@ -275,7 +281,9 @@ Make sure to call the `animate()` function to instruct the browser to utilize it
 animate();
 ```
 
-Congratulations! Your scene should now exhibit movement.
+Congratulations! Your scene should now exhibit movement as shown below:
+
+![twoObjects (1)](https://github.com/smosh001/Mias-tutorial/assets/98389984/1804e650-ea8d-45c3-b082-e973afa1e77c)
 
 ## Step 10: Using Three.js Helpers
 
@@ -299,6 +307,7 @@ For displaying the 3D axes in your scene, you can add a grid helper.
 const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(gridHelper);
 ```
+![lightHelper](https://github.com/smosh001/Mias-tutorial/assets/98389984/0ced7618-91d5-4659-b34a-e046195e5028)
 
 ## Step 11: Implementing Orbit Controls
 
@@ -340,11 +349,13 @@ Upon refreshing your server, you should be able to click and drag to orbit the c
 
 You can set your scene's background to an image of your choice. Follow these steps:
 
-1. Create a new folder named "images" in your project directory.
+12.1. Create a new folder named "images" in your project directory.
 
-2. Choose a high-resolution image you'd like as the background and save it in the "images" directory. For example, we're using a night sky image.
+12.2. Choose a high-resolution image you'd like as the background and save it in the "images" directory. For example, we're using a night sky image.
 
-3. Create a new `Texture` object and set it as the scene's background:
+![night_sky](https://github.com/smosh001/Mias-tutorial/assets/98389984/ca878884-e192-4b8a-915c-f8e785f283c1)
+
+12.3. Create a new `Texture` object and set it as the scene's background:
 
 ```javascript
 // Background
@@ -352,13 +363,17 @@ const spaceTexture = new THREE.TextureLoader().load('images/night_sky.jpg');
 scene.background = spaceTexture;
 ```
 
-Your scene will now have a custom background.
+Your scene will now have a custom background as shown below:
+
+![backgroundTexture](https://github.com/smosh001/Mias-tutorial/assets/98389984/c100b3bd-d897-4b6c-8dad-b81dd8724373)
 
 ## Step 13: Texture Mapping
 
 Texture mapping involves applying flat images to the surface of 3D objects. Three.js allows you to create Texture objects and apply them to your 3D objects. Here's how to do it:
 
 13.1. Find an image you'd like to apply to an object's surface and save it in the "images" directory. For example, we'll use a smiley face image.
+
+![smile](https://github.com/smosh001/Mias-tutorial/assets/98389984/579870f7-109a-4b62-a413-ee5ad3e897e3)
 
 13.2. Create a new `Texture`:
 
@@ -376,6 +391,7 @@ const smileMesh = new THREE.Mesh(sphereGeometry, smileMaterial);
 
 scene.add(smileMesh);
 ```
+![textureMapping](https://github.com/smosh001/Mias-tutorial/assets/98389984/bf25a1cc-e5eb-4ab5-aadb-71155ade8dba)
 
 You can adjust the object's position, rotation, and size as needed, just like with other objects.
 
@@ -385,19 +401,38 @@ In the world of 3D graphics, **Normal Texture Mapping** is a technique used in T
 
 To implement normal mapping, follow these steps:
 
-14.1. **Select a Texture:** Begin by choosing a texture image that you would like to apply to the surface of your 3D object. This texture will serve as the basis for creating the normal map.
+14.1. **Select a Texture:** 
 
-14.2. **Generate a Normal Map:** To create a normal map from your chosen texture, you can use online tools such as the **Texture Generator**. This process involves converting the features and details in your texture into a map that represents how light interacts with the surface.
+Begin by choosing a texture image that you would like to apply to the surface of your 3D object. This texture will serve as the basis for creating the normal map.
 
-14.3. **Resulting Textures:** Once generated, you'll have two images: the original texture and the newly created normal map. These images work in conjunction to give your object a realistic appearance.
+14.2. **Generate a Normal Map:** 
 
-14.4. **Create a Normal Texture Object:** In your JavaScript code, load the normal map image using Three.js's `TextureLoader`:
+To create a normal map from your chosen texture, you can use online tools such as the **Texture Generator** (http://cpetry.github.io/TextureGenerator-Online/). 
+This process involves converting the features and details in your texture into a map that represents how light interacts with the surface.
+
+![texture](https://github.com/smosh001/Mias-tutorial/assets/98389984/5b22fae3-c19b-4f3a-8345-49c4fe9dd117)
+
+Now, we must convert this texture image file into a normal map. We used this site to upload our texture image file and have it converted: **Normal Map Online**(https://cpetry.github.io/NormalMap-Online/)
+
+Here's the normal map that was generated from our image:
+
+![textureNormal](https://github.com/smosh001/Mias-tutorial/assets/98389984/7b2439ec-f135-4e2f-9027-465044aeaeb1)
+
+14.3. **Resulting Textures:** 
+
+Once generated, you'll have two images: the original texture and the newly created normal map. These images work in conjunction to give your object a realistic appearance.
+
+14.4. **Create a Normal Texture Object:** 
+
+In your JavaScript code, load the normal map image using Three.js's `TextureLoader`:
 
 ```javascript
 const normalTexture = new THREE.TextureLoader().load('images/normals/textureNormal.png');
 ```
 
-14.5. **Apply the Normal Map:** Apply the normal map to a new 3D object by including it in the `normalMap` property within a `MeshStandardMaterial`. This step allows your object to respond to light as if it had the detailed features of the normal map.
+14.5. **Apply the Normal Map:** 
+
+Apply the normal map to a new 3D object by including it in the `normalMap` property within a `MeshStandardMaterial`. This step allows your object to respond to light as if it had the detailed features of the normal map.
 
 ```javascript
 const torusGeo = new THREE.TorusKnotGeometry(5, 1, 250, 5, 9, 15);
@@ -413,6 +448,7 @@ scene.add(torusKnot);
 torusKnot.position.y = 20;
 ```
 
-Additionally, by adjusting properties like `roughness` and `metalness`, you can control how your object interacts with light, making it appear shinier or more reflective.
+By adjusting properties like `roughness` and `metalness`, you can control how your object interacts with light, making it appear shinier or more reflective, as shown below:
+![normalMapping](https://github.com/smosh001/Mias-tutorial/assets/98389984/83250568-e2a6-4856-a9e7-9c66fa19a270)
 
 With these steps, you can achieve a 3D scene with objects that have vivid, light-reactive textures, adding depth and realism to your Three.js project.
