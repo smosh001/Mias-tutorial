@@ -1,6 +1,6 @@
 ## Mastering Three.JS: Crafting 3D Worlds with HTML and JavaScript: A Three.Js Tutorial
 
-![threeJSblog](https://github.com/smosh001/Mias-tutorial/assets/98389984/080e6d36-f6e7-43f0-99f0-eabeff7165dd)
+![threeJSblog](https://github.com/smosh001/Mias-tutorial/assets/98389984/a2ccb950-7ef9-4347-94fe-1f6f8db09625)
 
 Take a look at a demonstration:
 
