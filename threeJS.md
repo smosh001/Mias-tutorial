@@ -24,7 +24,7 @@ While Node.js is a crucial part of our toolkit, the choice of development enviro
 
 ## Step 2: Verify and Set Up Development Environment
 
-## 2.1 Verify Node.js Installation
+2.1 Verify Node.js Installation
 
 To begin, it's essential to confirm whether you have Node.js installed on your system. We'll use the integrated terminal in Visual Studio Code (VS Code) for this check.
 
@@ -381,31 +381,38 @@ You can adjust the object's position, rotation, and size as needed, just like wi
 
 ## Step 14: Normal Texture Mapping
 
-Normal texture mapping allows you to create realistic textures by faking lighting on 3D objects. To achieve this, follow these steps:
+In the world of 3D graphics, **Normal Texture Mapping** is a technique used in Three.js to create rich and realistic textures that mimic the interaction of light with the surface of 3D objects. This technique is particularly useful for adding depth and intricacy to objects without the need to increase the number of polygons.
 
-14.1. Generate a normal map from an image. You can use online tools to create a normal map from a texture image. One online tool you can use is http://cpetry.github.io/TextureGenerator-Online/,It was used to generate the image below.
+To implement normal mapping, follow these steps:
 
-14.2. Save the generated normal map image in the "images" directory.
+14.1. **Select a Texture:** Begin by choosing a texture image that you would like to apply to the surface of your 3D object. This texture will serve as the basis for creating the normal map.
 
-14.3. Create a new `normalTexture`:
+14.2. **Generate a Normal Map:** To create a normal map from your chosen texture, you can use online tools such as the **Texture Generator**. This process involves converting the features and details in your texture into a map that represents how light interacts with the surface.
+
+14.3. **Resulting Textures:** Once generated, you'll have two images: the original texture and the newly created normal map. These images work in conjunction to give your object a realistic appearance.
+
+14.4. **Create a Normal Texture Object:** In your JavaScript code, load the normal map image using Three.js's `TextureLoader`:
 
 ```javascript
 const normalTexture = new THREE.TextureLoader().load('images/normals/textureNormal.png');
 ```
 
-14.4. Apply the normal map to a new 3D object, such as a torus knot:
+14.5. **Apply the Normal Map:** Apply the normal map to a new 3D object by including it in the `normalMap` property within a `MeshStandardMaterial`. This step allows your object to respond to light as if it had the detailed features of the normal map.
 
 ```javascript
-// Normal Texture Map
 const torusGeo = new THREE.TorusKnotGeometry(5, 1, 250, 5, 9, 15);
 const torusMaterial = new THREE.MeshStandardMaterial({
   normalMap: normalTexture,
   roughness: 0,
-  metalness: 0.8,
+  metalness: 0.8
 });
 
 const torusKnot = new THREE.Mesh(torusGeo, torusMaterial);
+
 scene.add(torusKnot);
 torusKnot.position.y = 20;
 ```
-Now your scene exhibits realistic textures with normal mapping, adding depth and realism to your 3D objects.
+
+Additionally, by adjusting properties like `roughness` and `metalness`, you can control how your object interacts with light, making it appear shinier or more reflective.
+
+With these steps, you can achieve a 3D scene with objects that have vivid, light-reactive textures, adding depth and realism to your Three.js project.
